@@ -1,0 +1,17 @@
+version: '3'
+services:
+  nextjs:
+    restart: always
+    image: <ACR_URL>:v1
+    ports: 
+      - 3000:3000
+    expose:
+      - 3000
+
+  nginx:
+    build: ./nginx
+    image: <ACR_URL>:v1
+    links:
+      - nextjs
+    ports:
+      - 80
